@@ -1,0 +1,166 @@
+/* ================================================
+   Mesh Gradient 背景动效备用实现
+   当外部库不可用时的CSS动画替代方案
+   ================================================ */
+
+/* Mesh Gradient 背景容器 */
+.mesh-gradient-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background: linear-gradient(135deg, #E8EAF0 0%, #F4F5F9 50%, #FAFBFF 100%);
+  overflow: hidden;
+}
+
+/* 动态渐变层 */
+.mesh-gradient-bg::before,
+.mesh-gradient-bg::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  border-radius: 50%;
+  animation: meshGradientMove 20s ease-in-out infinite;
+}
+
+.mesh-gradient-bg::before {
+  background: radial-gradient(circle at 30% 30%, rgba(0, 122, 255, 0.25) 0%, transparent 50%);
+  animation-delay: 0s;
+}
+
+.mesh-gradient-bg::after {
+  background: radial-gradient(circle at 70% 70%, rgba(0, 122, 255, 0.2) 0%, transparent 50%);
+  animation-delay: -10s;
+}
+
+/* 额外的渐变层增加深度 */
+.mesh-gradient-bg .gradient-layer-1,
+.mesh-gradient-bg .gradient-layer-2,
+.mesh-gradient-bg .gradient-layer-3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  animation: floatGradient 25s ease-in-out infinite;
+}
+
+.mesh-gradient-bg .gradient-layer-1 {
+  background: radial-gradient(ellipse at 25% 25%, rgba(232, 234, 240, 0.9) 0%, transparent 60%);
+  animation-delay: 0s;
+}
+
+.mesh-gradient-bg .gradient-layer-2 {
+  background: radial-gradient(ellipse at 75% 75%, rgba(244, 245, 249, 0.8) 0%, transparent 60%);
+  animation-delay: -8s;
+}
+
+.mesh-gradient-bg .gradient-layer-3 {
+  background: radial-gradient(ellipse at 50% 50%, rgba(250, 251, 255, 0.85) 0%, transparent 50%);
+  animation-delay: -16s;
+}
+
+/* 动画关键帧 */
+@keyframes meshGradientMove {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translate(5%, -3%) rotate(90deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-2%, 4%) rotate(180deg);
+    opacity: 0.7;
+  }
+  75% {
+    transform: translate(-4%, -2%) rotate(270deg);
+    opacity: 0.9;
+  }
+}
+
+@keyframes floatGradient {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.4;
+  }
+  33% {
+    transform: translate(3%, -2%) scale(1.1);
+    opacity: 0.6;
+  }
+  66% {
+    transform: translate(-2%, 3%) scale(0.9);
+    opacity: 0.5;
+  }
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .mesh-gradient-bg::before,
+  .mesh-gradient-bg::after {
+    animation-duration: 30s; /* 移动端减慢动画 */
+  }
+  
+  .mesh-gradient-bg .gradient-layer-1,
+  .mesh-gradient-bg .gradient-layer-2,
+  .mesh-gradient-bg .gradient-layer-3 {
+    animation-duration: 35s;
+  }
+}
+
+/* 减少动画模式 */
+@media (prefers-reduced-motion: reduce) {
+  .mesh-gradient-bg::before,
+  .mesh-gradient-bg::after,
+  .mesh-gradient-bg .gradient-layer-1,
+  .mesh-gradient-bg .gradient-layer-2,
+  .mesh-gradient-bg .gradient-layer-3 {
+    animation: none;
+    opacity: 0.3;
+  }
+}
+
+/* 高性能模式 */
+@media (prefers-reduced-motion: reduce) {
+  .mesh-gradient-bg {
+    background: linear-gradient(135deg, #E8EAF0 0%, #F4F5F9 50%, #FAFBFF 100%);
+  }
+  
+  .mesh-gradient-bg::before,
+  .mesh-gradient-bg::after {
+    display: none;
+  }
+}
+
+/* 硬件加速优化 */
+.mesh-gradient-bg,
+.mesh-gradient-bg::before,
+.mesh-gradient-bg::after,
+.mesh-gradient-bg .gradient-layer-1,
+.mesh-gradient-bg .gradient-layer-2,
+.mesh-gradient-bg .gradient-layer-3 {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* 浏览器兼容性 */
+@supports not (animation-name: meshGradientMove) {
+  .mesh-gradient-bg {
+    background: linear-gradient(135deg, #E8EAF0 0%, #F4F5F9 50%, #FAFBFF 100%);
+  }
+  
+  .mesh-gradient-bg::before,
+  .mesh-gradient-bg::after,
+  .mesh-gradient-bg .gradient-layer-1,
+  .mesh-gradient-bg .gradient-layer-2,
+  .mesh-gradient-bg .gradient-layer-3 {
+    display: none;
+  }
+}
