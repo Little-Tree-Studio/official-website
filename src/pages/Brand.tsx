@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { TreePine, ArrowLeft, Download, ExternalLink, FileText, Shield } from 'lucide-react';
 import { useI18n } from '@/hooks/useI18n';
+import siteLogo from '../../logo.png';
 
 export default function Brand() {
   const { lang, t } = useI18n();
@@ -67,8 +68,8 @@ export default function Brand() {
               {/* Logo Preview Card */}
               <div className="border border-[rgba(0,230,118,0.1)] bg-[rgba(0,230,118,0.02)] p-8 md:p-12 flex items-center justify-center min-h-[240px]">
                 <div className="text-center">
-                  <div className="w-20 h-20 border-2 border-[#00e676] flex items-center justify-center mx-auto mb-4 bg-[rgba(0,230,118,0.05)] shadow-[0_0_30px_rgba(0,230,118,0.1)]">
-                    <TreePine className="w-10 h-10 text-[#00e676]" />
+                  <div className="w-32 h-32 flex items-center justify-center mx-auto mb-4 drop-shadow-[0_0_30px_rgba(0,230,118,0.12)]">
+                    <img src={siteLogo} alt="Little Tree Studio logo preview" className="w-full h-full object-contain" />
                   </div>
                   <p className="text-xs font-bold text-[#f0f4f8] uppercase tracking-wider">
                     {isZh ? '小树工作室' : 'Little Tree Studio'}
@@ -108,9 +109,8 @@ export default function Brand() {
                 </div>
 
                 <a
-                  href="https://zsxiaoshu.cn/brand/logo.png"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={siteLogo}
+                  download="little-tree-studio-logo.png"
                   className="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#00e676] text-[#080c10] font-bold uppercase tracking-wider text-xs hover:shadow-[0_0_25px_rgba(0,230,118,0.25)] transition-all duration-300"
                 >
                   <Download className="w-3.5 h-3.5" />

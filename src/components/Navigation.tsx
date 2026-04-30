@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Menu, X, TreePine, KeyRound } from 'lucide-react';
+import { Menu, X, KeyRound } from 'lucide-react';
 import { useI18n } from '@/hooks/useI18n';
+import siteLogo from '../../logo.png';
 
 export default function Navigation() {
   const { lang, toggleLang, t } = useI18n();
@@ -49,8 +50,8 @@ export default function Navigation() {
         <div className="container-main flex items-center justify-between h-[60px]">
           {/* Logo */}
           <a href="#/" className="flex items-center gap-2 group">
-            <div className="w-7 h-7 border border-[rgba(0,230,118,0.25)] flex items-center justify-center transition-all duration-300 group-hover:border-[#00e676] bg-[rgba(0,230,118,0.05)]">
-              <TreePine className="w-3.5 h-3.5 text-[#00e676]" />
+            <div className="w-9 h-9 flex items-center justify-center transition-transform duration-300 group-hover:scale-[1.03]">
+              <img src={siteLogo} alt="Little Tree Studio logo" className="w-full h-full object-contain" />
             </div>
             <span className="font-bold text-sm text-[#f0f4f8] tracking-tight">
               {lang === 'zh' ? '小树工作室' : 'LITTLE TREE'}
