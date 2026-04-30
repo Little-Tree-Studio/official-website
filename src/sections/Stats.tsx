@@ -4,7 +4,7 @@ import { useI18n } from '@/hooks/useI18n';
 
 const statsData = [
   { key: 'products', value: 4 },
-  { key: 'members', value: 2 },
+  { key: 'members', value: 6 },
   { key: 'opensource', value: 100, suffix: '%' },
   { key: 'repos', value: 7 },
 ];

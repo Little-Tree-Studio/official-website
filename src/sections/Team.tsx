@@ -2,8 +2,48 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useI18n } from '@/hooks/useI18n';
 
 const members = [
-  { key: 'xiaoshu', avatar: '/images/avatar-xiaoshu.jpg' },
-  { key: 'kyle', avatar: '/images/avatar-kyle.jpg' },
+  {
+    key: 'xiaoshu',
+    avatar: '/images/team/avatar-xiaoshu.jpg',
+    fallback: '小',
+    zhName: '小树',
+    enName: 'Xiaoshu',
+  },
+  {
+    key: 'kyle',
+    avatar: '/images/team/avatar-kyle.jpg',
+    fallback: 'K',
+    zhName: 'Kyle',
+    enName: 'Kyle',
+  },
+  {
+    key: 'wzr',
+    Avatar: '/images/team/avatar-wzr.jpg',
+    fallback: 'WZ',
+    zhName: 'wzr',
+    enName: 'wzr',
+  },
+  {
+    key: 'sophia',
+    avatar: '/images/team/avatar-sophia.jpg',
+    fallback: 'S',
+    zhName: 'Sophia',
+    enName: 'Sophia',
+  },
+  {
+    key: 'sunkouniao',
+    avatar: '/images/team/avatar-jellish.jpg',
+    fallback: '孙',
+    zhName: '孙口鸟',
+    enName: 'Jellish',
+  },
+  {
+    key: 'quanlan',
+    avatar: '/images/team/avatar-quanlan.jpg',
+    fallback: '泉',
+    zhName: '泉岚',
+    enName: 'Quanlan',
+  },
 ];
 
 export default function Team() {
@@ -34,7 +74,7 @@ export default function Team() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[720px]">
           {members.map((member, i) => {
             const tags = String(t(`team.${member.key}.tags`)).split(',');
-            const displayName = member.key === 'xiaoshu' ? (lang === 'zh' ? '小树' : 'Xiaoshu') : 'Kyle';
+            const displayName = lang === 'zh' ? member.zhName : member.enName;
             return (
               <div
                 key={member.key}
@@ -46,8 +86,14 @@ export default function Team() {
                 {/* Avatar + Name row */}
                 <div className="flex items-center gap-4 mb-4">
                   <div className="relative">
-                    <div className="w-14 h-14 overflow-hidden border border-[#00e676]">
-                      <img src={member.avatar} alt="" className="w-full h-full object-cover" loading="lazy" />
+                    <div className="w-14 h-14 overflow-hidden border border-[#00e676] bg-[rgba(0,230,118,0.06)] flex items-center justify-center">
+                      {member.avatar ? (
+                        <img src={member.avatar} alt={displayName} className="w-full h-full object-cover" loading="lazy" />
+                      ) : (
+                        <span className="text-sm font-black tracking-[0.12em] text-[#69f0ae] uppercase">
+                          {member.fallback}
+                        </span>
+                      )}
                     </div>
                     <div className="absolute -top-0.5 -left-0.5 w-2 h-2 border-t border-l border-[#00e676]" />
                     <div className="absolute -bottom-0.5 -right-0.5 w-2 h-2 border-b border-r border-[#00e676]" />
