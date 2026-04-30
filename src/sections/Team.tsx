@@ -18,7 +18,7 @@ const members = [
   },
   {
     key: 'wzr',
-    Avatar: '/images/team/avatar-wzr.jpg',
+    avatar: '/images/team/avatar-wzr.jpg',
     fallback: 'WZ',
     zhName: 'wzr',
     enName: 'wzr',
