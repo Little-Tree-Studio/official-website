@@ -1,51 +1,73 @@
-# 小树工作室官网 | Little Tree Studio Official Website
+# React + TypeScript + Vite
 
-欢迎来到小树工作室的官方网站！
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Welcome to Little Tree Studio's official website!
+Currently, two official plugins are available:
 
-## 🌳 关于 About
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-小树工作室是一个比较自由的独立软件开发团队，专注于创造实用、有趣且创新的软件产品。
+## React Compiler
 
-Little Tree Studio is a free and independent software development team focused on creating practical, fun, and innovative software products.
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## 🚀 产品 Products
+## Expanding the ESLint configuration
 
-- **🖼️ 小树壁纸** - 精美的壁纸管理工具
-- **⛏️ MineLauncher** - 我的世界启动器
-- **🎬 视频压缩** - 高效的视频压缩软件
-- **🔮 赛博玻璃** - 一个非常无聊的软件
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-## 🌐 如何查看网站 How to View
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-### 方法 1: 直接打开 Direct Open
-直接在浏览器中打开 `index.html` 文件
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-Simply open `index.html` in your browser
-
-### 方法 2: 本地服务器 Local Server
-
-```bash
-# 使用 Python 启动简单服务器
-python3 -m http.server 8000
-
-# 或使用 Node.js
-npx http-server
-
-# 然后在浏览器访问
-# Then visit in browser: http://localhost:8000
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
-## 📱 特性 Features
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-- ✅ 响应式设计，完美支持移动端
-- ✅ 现代化 UI/UX 设计
-- ✅ 流畅的动画效果
-- ✅ 产品展示
-- ✅ 服务介绍
-- ✅ 联系方式
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-## 📄 License
-
-Mozilla Public License Version 2.0
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>品牌资源 - 小树工作室</title>
+  <meta name="description" content="小树工作室品牌资源下载 - Logo、使用规范、LTS-OVAL许可协议">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #080c10;
+      --bg2: #0e1319;
+      --accent: #00e676;
+      --accent-light: #69f0ae;
+      --text: #f0f4f8;
+      --text2: #8a9ba8;
+      --muted: #4a5a66;
+      --border: rgba(0, 230, 118, 0.1);
+      --border-hover: rgba(0, 230, 118, 0.3);
+    }
+    body {
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    @media (min-width: 1024px) {
+      .container { padding: 0 2rem; }
+    }
+
+    /* Header */
+    .header-bar {
+      border-bottom: 1px solid var(--border);
+    }
+    .header-bar .container {
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text2);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--accent); }
+    .back-link svg { width: 14px; height: 14px; }
+    .header-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    /* Section tag */
+    .section-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      text-transform: uppercase;
+      border: 1px solid rgba(0, 230, 118, 0.2);
+      padding: 6px 12px;
+      background: rgba(0, 230, 118, 0.03);
+    }
+    .section-tag-en {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-left: 1rem;
+    }
+
+    /* Title */
+    .page-title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+    .page-desc {
+      color: var(--text2);
+      font-size: 14px;
+      max-width: 560px;
+      line-height: 1.7;
+    }
+    .section-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .section-title svg { width: 16px; height: 16px; color: var(--accent); }
+
+    /* Cards */
+    .card {
+      border: 1px solid var(--border);
+      background: rgba(0, 230, 118, 0.02);
+    }
+    .card-preview {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem;
+      min-height: 240px;
+    }
+    .card-info {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+    @media (min-width: 768px) {
+      .card-preview { padding: 3rem 4rem; }
+      .card-info { padding: 2rem; }
+    }
+
+    /* Logo preview */
+    .logo-box {
+      width: 80px;
+      height: 80px;
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      background: rgba(0, 230, 118, 0.05);
+      box-shadow: 0 0 30px rgba(0, 230, 118, 0.1);
+    }
+    .logo-box svg { width: 40px; height: 40px; color: var(--accent); }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg);
+    }
+    .btn-primary:hover {
+      box-shadow: 0 0 25px rgba(0, 230, 118, 0.25);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid rgba(0, 230, 118, 0.25);
+    }
+    .btn-outline:hover {
+      border-color: var(--accent);
+      background: rgba(0, 230, 118, 0.08);
+    }
+    .btn-muted {
+      background: transparent;
+      color: var(--text2);
+      border: 1px solid var(--border);
+    }
+    .btn-muted:hover {
+      border-color: rgba(0, 230, 118, 0.3);
+      color: var(--text);
+    }
+
+    /* Meta rows */
+    .meta-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 13px;
+      color: var(--text2);
+      margin-bottom: 0.75rem;
+    }
+    .meta-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      width: 64px;
+      flex-shrink: 0;
+    }
+    .meta-value { color: var(--text); font-weight: 500; }
+
+    /* License section */
+    .license-box {
+      border: 1px solid rgba(0, 230, 118, 0.12);
+      background: rgba(0, 230, 118, 0.02);
+      padding: 1.5rem;
+    }
+    @media (min-width: 768px) {
+      .license-box { padding: 2rem; }
+    }
+    .license-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .license-icon {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(0, 230, 118, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 230, 118, 0.05);
+      flex-shrink: 0;
+    }
+    .license-icon svg { width: 16px; height: 16px; color: var(--accent); }
+    .license-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .license-code {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+    .license-text {
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Guidelines grid */
+    .guidelines-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    @media (min-width: 640px) {
+      .guidelines-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 1024px) {
+      .guidelines-grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+    .guide-item {
+      background: var(--bg);
+      padding: 1.25rem;
+    }
+    .guide-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 6px;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .guide-badge.do {
+      color: var(--accent);
+      border: 1px solid rgba(0, 230, 118, 0.2);
+    }
+    .guide-badge.dont {
+      color: #ff5252;
+      border: 1px solid rgba(255, 82, 82, 0.2);
+    }
+    .guide-text {
+      font-size: 13px;
+      color: var(--text2);
+    }
+
+    /* Layout */
+    .py-section { padding-top: 4rem; padding-bottom: 4rem; }
+    @media (min-width: 768px) {
+      .py-section { padding-top: 6rem; padding-bottom: 6rem; }
+    }
+    .mb-section { margin-bottom: 3rem; }
+    @media (min-width: 768px) {
+      .mb-section { margin-bottom: 4rem; }
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media (min-width: 768px) {
+      .grid-2 { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 0;
+    }
+    .site-footer .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    @media (min-width: 640px) {
+      .site-footer .container {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+    .footer-text {
+      font-size: 10px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+    }
+    .footer-link {
+      font-size: 10px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      transition: color 0.2s;
+    }
+    .footer-link:hover { color: var(--accent); }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up {
+      animation: fadeUp 0.6s ease-out both;
+    }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header-bar">
+    <div class="container">
+      <a href="/" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        返回首页 / Back to Home
+      </a>
+      <span class="header-tag">Brand Assets</span>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <div class="container py-section">
+    <!-- Page Title -->
+    <div class="mb-section fade-up">
+      <div style="display:flex;align-items:baseline;gap:1rem;margin-bottom:1rem;">
+        <span class="section-tag">品牌资源</span>
+        <span class="section-tag-en">BRAND ASSETS</span>
+      </div>
+      <h1 class="page-title">小树工作室品牌资源</h1>
+      <p class="page-desc">
+        下载并使用我们的官方品牌标识。使用这些资源即表示您同意遵守 LTS-OVAL 许可协议。
+        <br><span style="color:var(--muted)">Download and use our official brand identity. By using these assets, you agree to comply with the LTS-OVAL License.</span>
+      </p>
+    </div>
+
+    <!-- Logo Download -->
+    <div class="mb-section fade-up delay-1">
+      <h2 class="section-title">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V8"/><path d="m5 12 7-7 7 7"/><path d="M4.5 8A2.5 2.5 0 0 1 7 5.5h10a2.5 2.5 0 0 1 2.5 2.5"/><path d="M5 10v9a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-9"/></svg>
+        官方 Logo / Official Logo
+      </h2>
+      <div class="grid-2">
+        <!-- Preview -->
+        <div class="card card-preview">
+          <div style="text-align:center;">
+            <div class="logo-box">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V8"/><path d="m5 12 7-7 7 7"/><path d="M4.5 8A2.5 2.5 0 0 1 7 5.5h10a2.5 2.5 0 0 1 2.5 2.5"/><path d="M5 10v9a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-9"/></svg>
+            </div>
+            <p style="font-size:12px;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:0.1em;">小树工作室</p>
+            <p style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-top:4px;">Logo Preview</p>
+          </div>
+        </div>
+        <!-- Info + Download -->
+        <div class="card card-info">
+          <div>
+            <h3 style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:0.5rem;">Logo PNG</h3>
+            <p style="font-size:13px;color:var(--text2);margin-bottom:1.5rem;line-height:1.6;">
+              透明背景 PNG 格式，适用于数字媒体和演示文稿。
+              <br><span style="color:var(--muted)">Transparent background PNG, suitable for digital media.</span>
+            </p>
+            <div class="meta-row">
+              <span class="meta-label">格式 Format</span>
+              <span class="meta-value">PNG</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">背景 BG</span>
+              <span class="meta-value">透明 Transparent</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">用途 Use</span>
+              <span class="meta-value">数字媒体 / 网页 Digital / Web</span>
+            </div>
+          </div>
+          <a href="https://zsxiaoshu.cn/brand/logo.png" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:1.5rem;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+            下载 Logo / Download
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- License -->
+    <div class="mb-section fade-up delay-2">
+      <h2 class="section-title">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+        使用许可 / License
+      </h2>
+      <div class="license-box">
+        <div class="license-header">
+          <div class="license-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+          </div>
+          <div>
+            <div class="license-title">Little Tree Studio Original Visual Assets License</div>
+            <div class="license-code">LTS-OVAL</div>
+          </div>
+        </div>
+        <p class="license-text">
+          小树工作室的所有品牌视觉资产（包括但不限于 Logo、图标、配色方案）均受 LTS-OVAL 许可协议保护。下载和使用这些资源即表示您同意遵守该协议的所有条款。请勿修改、扭曲或重新着色 Logo。如有疑问，请联系我们。
+          <br><br>
+          <span style="color:var(--muted)">All brand visual assets of Little Tree Studio are protected by the LTS-OVAL License. Downloading and using these assets indicates your agreement to comply with all terms. Do not modify, distort, or recolor the logo.</span>
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.75rem;">
+          <a href="https://docs.zsxiaoshu.cn/en/terms/studio/oval/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+            查看完整协议 View Full License
+          </a>
+          <a href="mailto:studio@zsxiaoshu.cn" class="btn btn-muted">
+            许可咨询 License Inquiry
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Usage Guidelines -->
+    <div class="fade-up delay-3">
+      <h2 class="section-title">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        使用规范 / Usage Guidelines
+      </h2>
+      <div class="guidelines-grid">
+        <div class="guide-item">
+          <span class="guide-badge do">应该 DO</span>
+          <p class="guide-text">保持 Logo 的原始比例和颜色<br><span style="color:var(--muted)">Maintain original proportions</span></p>
+        </div>
+        <div class="guide-item">
+          <span class="guide-badge do">应该 DO</span>
+          <p class="guide-text">在深色背景上使用绿色版本<br><span style="color:var(--muted)">Use green on dark backgrounds</span></p>
+        </div>
+        <div class="guide-item">
+          <span class="guide-badge do">应该 DO</span>
+          <p class="guide-text">保留足够的安全边距<br><span style="color:var(--muted)">Keep clear space around logo</span></p>
+        </div>
+        <div class="guide-item">
+          <span class="guide-badge dont">不应该 DON'T</span>
+          <p class="guide-text">修改、扭曲或重新着色<br><span style="color:var(--muted)">Modify, distort or recolor</span></p>
+        </div>
+        <div class="guide-item">
+          <span class="guide-badge dont">不应该 DON'T</span>
+          <p class="guide-text">用于暗示官方 endorsement<br><span style="color:var(--muted)">Imply official endorsement</span></p>
+        </div>
+        <div class="guide-item">
+          <span class="guide-badge dont">不应该 DON'T</span>
+          <p class="guide-text">与其他 Logo 组合使用<br><span style="color:var(--muted)">Combine with other logos</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <span class="footer-text">&copy; 2025 小树工作室 Little Tree Studio. All rights reserved.</span>
+      <a href="https://docs.zsxiaoshu.cn/en/terms/studio/oval/" target="_blank" rel="noopener noreferrer" class="footer-link">LTS-OVAL License</a>
+    </div>
+  </footer>
+</body>
+</html>

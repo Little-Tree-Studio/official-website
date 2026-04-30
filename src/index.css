@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #080c10;
+    --bg-secondary: #0e1319;
+    --bg-elevated: rgba(18, 26, 35, 0.85);
+    --accent-primary: #00e676;
+    --accent-secondary: #69f0ae;
+    --accent-glow: rgba(0, 230, 118, 0.2);
+    --text-primary: #f0f4f8;
+    --text-secondary: #8a9ba8;
+    --text-muted: #4a5a66;
+    --border-subtle: rgba(0, 230, 118, 0.15);
+    --border-hover: rgba(0, 230, 118, 0.4);
+    --radius: 0rem;
+    --background: 210 50% 3%;
+    --foreground: 200 20% 96%;
+    --primary: 152 100% 45%;
+    --primary-foreground: 210 50% 3%;
+    --border: 152 60% 15%;
+    --input: 152 60% 15%;
+    --ring: 152 100% 45%;
+    --muted: 210 20% 8%;
+    --muted-foreground: 200 10% 55%;
+    --accent: 210 20% 8%;
+    --accent-foreground: 200 20% 96%;
+    --card: 210 30% 5%;
+    --card-foreground: 200 20% 96%;
+    --popover: 210 30% 5%;
+    --popover-foreground: 200 20% 96%;
+    --secondary: 210 20% 8%;
+    --secondary-foreground: 200 20% 96%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+    border-radius: 0 !important;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  ::selection {
+    background-color: rgba(0, 230, 118, 0.25);
+    color: var(--text-primary);
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg-primary); }
+  ::-webkit-scrollbar-thumb { background: var(--text-muted); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
+}
+
+@layer components {
+  /* Section tag: small uppercase label with green accent */
+  .section-tag {
+    @apply text-[10px] font-bold tracking-[0.2em] text-[#00e676] uppercase;
+  }
+
+  /* Section title: large bold heading */
+  .section-title {
+    @apply text-[clamp(1.5rem,3.5vw,2.25rem)] font-black text-[#f0f4f8] tracking-[-0.02em] leading-tight;
+  }
+
+  /* Section subtitle: muted body text */
+  .section-subtitle {
+    @apply text-[#8a9ba8] leading-relaxed text-sm md:text-base;
+  }
+
+  /* Sharp panel with subtle green glow line */
+  .sharp-panel {
+    background: rgba(18, 26, 35, 0.85);
+    backdrop-filter: blur(12px) saturate(120%);
+    -webkit-backdrop-filter: blur(12px) saturate(120%);
+    border: 1px solid rgba(0, 230, 118, 0.15);
+    position: relative;
+  }
+
+  .sharp-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 230, 118, 0.25), transparent);
+  }
+
+  /* Container with consistent max-width */
+  .container-main {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .container-main {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  /* Section vertical spacing */
+  .section-padding {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .section-padding {
+      padding-top: 7rem;
+      padding-bottom: 7rem;
+    }
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
