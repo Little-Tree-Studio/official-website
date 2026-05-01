@@ -15,6 +15,12 @@ const productEnNames: Record<string, string> = {
   video: 'VIDEO COMPRESSOR',
   cyber: 'CYBER GLASS',
 };
+const productLinks: Record<string, string> = {
+  wallpaper: 'https://wp.zsxiaoshu.cn',
+  mine: 'https://github.com/Little-Tree-Studio',
+  video: 'https://github.com/Little-Tree-Studio',
+  cyber: 'https://github.com/Little-Tree-Studio',
+};
 
 export default function Products() {
   const { ref, isVisible } = useScrollAnimation(0.1);
@@ -50,7 +56,7 @@ export default function Products() {
             return (
               <a
                 key={key}
-                href="https://github.com/Little-Tree-Studio"
+                href={productLinks[key]}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`group block border border-[rgba(0,230,118,0.1)] bg-[rgba(0,230,118,0.02)] p-6 md:p-8 transition-all duration-400 hover:border-[rgba(0,230,118,0.3)] hover:bg-[rgba(0,230,118,0.04)] ${

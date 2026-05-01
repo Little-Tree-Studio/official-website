@@ -71,7 +71,7 @@ export default function Team() {
         </div>
 
         {/* Members */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[720px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
           {members.map((member, i) => {
             const tags = String(t(`team.${member.key}.tags`)).split(',');
             const displayName = lang === 'zh' ? member.zhName : member.enName;
