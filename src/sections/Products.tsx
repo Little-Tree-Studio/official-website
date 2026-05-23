@@ -2,24 +2,24 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useI18n } from '@/hooks/useI18n';
 import { ArrowUpRight } from 'lucide-react';
 
-const productKeys = ['wallpaper', 'mine', 'video', 'cyber'];
+const productKeys = ['wallpaper', 'mine', 'clock', 'cyber'];
 const productIcons: Record<string, string> = {
   wallpaper: '/images/wallpaper-icon.png',
   mine: '/images/minecraft-icon.png',
-  video: '/images/video-icon.png',
+  clock: '/images/clock-icon.png',
   cyber: '/images/cyberglass-icon.png',
 };
 const productEnNames: Record<string, string> = {
   wallpaper: 'WALLPAPER MANAGER',
   mine: 'MC LAUNCHER',
-  video: 'VIDEO COMPRESSOR',
+  clock: 'LITTLE TREE CLOCK',
   cyber: 'CYBER GLASS',
 };
 const productLinks: Record<string, string> = {
   wallpaper: 'https://wp.zsxiaoshu.cn',
-  mine: 'https://github.com/Little-Tree-Studio',
-  video: 'https://github.com/Little-Tree-Studio',
-  cyber: 'https://github.com/Little-Tree-Studio',
+  mine: 'https://ml.zsxiaoshu.cn',
+  clock: 'https://clock.zsxiaoshu.cn',
+  cyber: 'https://github.com/shu-shu-1/glass',
 };
 
 export default function Products() {

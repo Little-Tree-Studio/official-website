@@ -198,7 +198,7 @@ export default function Brand() {
                 },
                 {
                   do: false,
-                  zh: '用于暗示官方 endorsement',
+                  zh: '用于暗示官方背书',
                   en: 'Use to imply official endorsement',
                 },
                 {
