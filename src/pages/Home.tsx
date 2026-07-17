@@ -1,25 +1,25 @@
-import Hero from '@/sections/Hero';
-import Stats from '@/sections/Stats';
-import Products from '@/sections/Products';
-import About from '@/sections/About';
-import TechStack from '@/sections/TechStack';
-import Team from '@/sections/Team';
-import Contact from '@/sections/Contact';
-import Footer from '@/sections/Footer';
+import Navbar from '../sections/Navbar'
+import Hero from '../sections/Hero'
+import About from '../sections/About'
+import Products from '../sections/Products'
+import Services from '../sections/Services'
+import Team from '../sections/Team'
+import SubStudios from '../sections/SubStudios'
+import Footer from '../sections/Footer'
 
 export default function Home() {
   return (
-    <>
-      <main className="relative z-10">
+    <div className="relative min-h-screen bg-background">
+      <Navbar />
+      <main>
         <Hero />
-        <Stats />
-        <Products />
         <About />
-        <TechStack />
+        <Products />
+        <Services />
         <Team />
-        <Contact />
+        <SubStudios />
       </main>
       <Footer />
-    </>
-  );
+    </div>
+  )
 }

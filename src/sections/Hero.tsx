@@ -1,136 +1,106 @@
-import { useEffect, useState, useRef } from 'react';
-import { ArrowRight, BookOpen, KeyRound } from 'lucide-react';
-import { useI18n } from '@/hooks/useI18n';
+import { motion } from 'framer-motion'
+import { ArrowRight, ArrowUpRight } from 'lucide-react'
+
+const fadeUp = {
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0 },
+}
+
+const stats = [
+  { value: '06', label: '核心团队成员' },
+  { value: '04', label: '核心产品' },
+  { value: '100%', label: '开源理念' },
+]
 
 export default function Hero() {
-  const [loaded, setLoaded] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const { lang, t } = useI18n();
-
-  useEffect(() => {
-    const timer = setTimeout(() => setLoaded(true), 200);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  // Bilingual title composition
-  const mainTitle = lang === 'zh'
-    ? ['创新软件', '自由创造']
-    : ['INNOVATE', 'FREELY'];
-  const accentTitle = lang === 'zh'
-    ? ['INNOVATE', 'SOFTWARE']
-    : ['SOFTWARE', 'CREATE'];
-
   return (
-    <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden">
-      {/* Video Background */}
-      <div className="absolute inset-0 z-0">
-        <video
-          ref={videoRef}
-          autoPlay muted loop playsInline
-          className="w-full h-full object-cover"
-          style={{ filter: 'brightness(0.3) contrast(1.1)' }}
+    <section id="home" className="relative overflow-hidden">
+      {/* 背景：超大浅色衬线水印 */}
+      <div
+        aria-hidden
+        className="font-serif-en pointer-events-none absolute -right-10 top-16 select-none text-[26vw] leading-none text-foreground/[0.035] lg:text-[19rem]"
+      >
+        Studio
+      </div>
+
+      <div className="relative mx-auto max-w-6xl px-6 pb-20 pt-40 md:pb-28 md:pt-52">
+        <motion.p
+          {...fadeUp}
+          transition={{ duration: 0.6 }}
+          className="flex items-center gap-4 text-xs uppercase tracking-[0.35em] text-muted-foreground"
         >
-          <source src="/videos/hero-bg.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#080c10]/50 via-[#080c10]/30 to-[#080c10]" />
-      </div>
-
-      {/* Corner frames */}
-      <div className="absolute inset-6 md:inset-10 z-10 pointer-events-none">
-        <div className="absolute top-0 left-0 w-12 h-12 border-t border-l border-[rgba(0,230,118,0.2)]" />
-        <div className="absolute top-0 right-0 w-12 h-12 border-t border-r border-[rgba(0,230,118,0.2)]" />
-        <div className="absolute bottom-0 left-0 w-12 h-12 border-b border-l border-[rgba(0,230,118,0.2)]" />
-        <div className="absolute bottom-0 right-0 w-12 h-12 border-b border-r border-[rgba(0,230,118,0.2)]" />
-      </div>
-
-      <div className="relative z-20 text-center px-4 max-w-[800px] mx-auto">
-        {/* Studio tag */}
-        <div className={`mb-8 transition-all duration-700 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          <span className="section-tag border border-[rgba(0,230,118,0.2)] px-4 py-2 bg-[rgba(0,230,118,0.03)]">
-            {lang === 'zh' ? 'INDIE STUDIO' : 'INDIE SOFTWARE STUDIO'} · 2023-2026
+          <span className="hairline w-10" />
+          <span className="font-serif-en text-base normal-case tracking-normal text-primary">
+            Independent Software Studio
           </span>
-        </div>
+          独立软件工作室
+        </motion.p>
 
-        {/* Main Title - bilingual stacked */}
-        <h1 className="mb-8">
-          <span className={`block transition-all duration-700 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '250ms' }}>
-            <span className="text-[clamp(2.5rem,7vw,5rem)] font-black tracking-[-0.03em] leading-[0.95] text-[#f0f4f8] uppercase">
-              {mainTitle[0]}
-            </span>
+        <motion.h1
+          {...fadeUp}
+          transition={{ duration: 0.7, delay: 0.12 }}
+          className="font-serif-cn mt-10 text-6xl font-black leading-[1.18] tracking-tight md:text-8xl"
+        >
+          创新软件，
+          <br />
+          <span className="text-primary">自由创造</span>
+          <span className="font-serif-en ml-4 align-top text-2xl font-medium text-muted-foreground md:text-4xl">
+            &amp; beyond.
           </span>
-          <span className={`block transition-all duration-700 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '400ms' }}>
-            <span className="text-[clamp(2.5rem,7vw,5rem)] font-black tracking-[-0.03em] leading-[0.95] text-[#00e676] uppercase">
-              {mainTitle[1]}
-            </span>
-          </span>
-          {/* Cross-language echo */}
-          <span className={`block mt-3 transition-all duration-700 ${loaded ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '550ms' }}>
-            <span className="text-xs font-bold tracking-[0.35em] text-[#4a5a66] uppercase">
-              {accentTitle[0]} {accentTitle[1]}
-            </span>
-          </span>
-        </h1>
+        </motion.h1>
 
-        {/* Divider */}
-        <div className={`w-20 h-[1px] bg-[#00e676] mx-auto mb-8 transition-all duration-700 ${loaded ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'}`} style={{ transitionDelay: '650ms' }} />
+        <motion.p
+          {...fadeUp}
+          transition={{ duration: 0.7, delay: 0.24 }}
+          className="mt-10 max-w-xl text-base leading-loose text-muted-foreground md:text-lg"
+        >
+          相信技术应该让生活更美好，
+          <br />
+          致力于开发实用且有趣的软件产品。
+        </motion.p>
 
-        {/* Subtitle */}
-        <p className={`text-[#8a9ba8] text-base md:text-lg max-w-[520px] mx-auto leading-relaxed mb-4 transition-all duration-700 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`} style={{ transitionDelay: '750ms' }}>
-          {t('hero.subtitle')}
-        </p>
-
-        {/* Keywords line for zh */}
-        {lang === 'zh' && (
-          <p className={`text-[10px] font-bold tracking-[0.3em] text-[#4a5a66] uppercase mb-10 transition-all duration-700 ${loaded ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '850ms' }}>
-            Practical · Fun · Open Source · Creative
-          </p>
-        )}
-        {lang === 'en' && <div className="mb-8" />}
-
-        {/* CTA Buttons - 3 core actions */}
-        <div className={`flex flex-wrap items-center justify-center gap-3 transition-all duration-700 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`} style={{ transitionDelay: '950ms' }}>
-          <button
-            onClick={() => scrollTo('products')}
-            className="group inline-flex items-center gap-2 px-7 py-3 bg-[#00e676] text-[#080c10] font-bold uppercase tracking-wider text-xs hover:shadow-[0_0_25px_rgba(0,230,118,0.25)] transition-all duration-300"
-          >
-            {t('hero.cta.products')}
-            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-          </button>
-
+        <motion.div
+          {...fadeUp}
+          transition={{ duration: 0.7, delay: 0.36 }}
+          className="mt-12 flex flex-wrap items-center gap-6"
+        >
           <a
-            href="https://docs.zsxiaoshu.cn"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-7 py-3 border border-[rgba(0,230,118,0.25)] text-[#f0f4f8] font-bold uppercase tracking-wider text-xs hover:border-[rgba(0,230,118,0.5)] hover:bg-[rgba(0,230,118,0.05)] transition-all duration-300"
+            href="#products"
+            className="group inline-flex items-center gap-2.5 rounded-md bg-foreground px-7 py-3.5 text-sm font-medium text-background transition-colors hover:bg-primary"
           >
-            <BookOpen className="w-3.5 h-3.5" />
-            {t('hero.cta.docs')}
+            探索我们的产品
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
-
           <a
-            href="https://auth.zsxiaoshu.cn"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-7 py-3 border border-[#00e676] text-[#00e676] font-bold uppercase tracking-wider text-xs hover:bg-[#00e676] hover:text-[#080c10] transition-all duration-300"
+            href="#about"
+            className="link-underline inline-flex items-center gap-1.5 text-sm font-medium text-foreground"
           >
-            <KeyRound className="w-3.5 h-3.5" />
-            {t('nav.passport')}
+            了解工作室
+            <ArrowUpRight className="h-4 w-4" />
           </a>
-        </div>
-      </div>
+        </motion.div>
 
-      {/* Scroll indicator */}
-      <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 z-20 transition-all duration-700 ${loaded ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '1400ms' }}>
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-[9px] text-[#4a5a66] uppercase tracking-[0.25em] font-bold">{t('scroll')}</span>
-          <div className="w-[1px] h-6 bg-gradient-to-b from-[#00e676] to-transparent" />
-        </div>
+        {/* 底部数据条 */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.9, delay: 0.55 }}
+          className="mt-20 border-t border-border pt-8 md:mt-28"
+        >
+          <div className="flex flex-wrap gap-x-14 gap-y-6">
+            {stats.map((s) => (
+              <div key={s.label} className="flex items-baseline gap-3">
+                <span className="font-serif-cn text-4xl font-bold text-foreground md:text-5xl">
+                  {s.value}
+                </span>
+                <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                  {s.label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
-  );
+  )
 }

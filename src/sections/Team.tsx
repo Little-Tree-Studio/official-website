@@ -1,129 +1,112 @@
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { useI18n } from '@/hooks/useI18n';
+import { motion } from 'framer-motion'
+import SectionHeader from './SectionHeader'
 
 const members = [
   {
-    key: 'xiaoshu',
+    name: '小树',
+    en: 'Xiaoshu',
     avatar: '/images/team/avatar-xiaoshu.jpg',
-    fallback: '小',
-    zhName: '小树',
-    enName: 'Xiaoshu',
+    role: '团队负责人',
+    desc: '负责项目整体规划和 UI 设计，团队的技术和设计方向把控者。',
+    tags: ['项目管理', 'UI设计', '架构设计'],
   },
   {
-    key: 'kyle',
+    name: 'Kyle',
+    en: 'Kyle',
     avatar: '/images/team/avatar-kyle.jpg',
-    fallback: 'K',
-    zhName: 'Kyle',
-    enName: 'Kyle',
+    role: '功能开发和性能优化',
+    desc: '专注于前端开发和性能优化，确保产品的高效稳定运行。',
+    tags: ['前端开发', '性能优化', '系统架构'],
   },
   {
-    key: 'wzr',
+    name: 'wzr',
+    en: 'wzr',
     avatar: '/images/team/avatar-wzr.jpg',
-    fallback: 'WZ',
-    zhName: 'wzr',
-    enName: 'wzr',
+    role: '内部工具 / AI / 设计',
+    desc: '负责内部工具建设、AI 应用与项目设计，提升团队研发效率。',
+    tags: ['内部工具', 'AI 应用', '项目设计'],
   },
   {
-    key: 'sophia',
+    name: '一诺',
+    en: 'yinuo',
+    avatar: '/images/team/avatar-yinuo.jpg',
+    role: '内部 AI 模型 / 内部工具',
+    desc: '提供内部 AI 模型，负责内部工具的研发与维护，为团队提供智能化支撑。',
+    tags: ['AI 模型', '内部工具', '效率支撑'],
+  },
+  {
+    name: 'Sophia',
+    en: 'Sophia',
     avatar: '/images/team/avatar-sophia.jpg',
-    fallback: 'S',
-    zhName: 'Sophia',
-    enName: 'Sophia',
+    role: '艺术设计与宣传',
+    desc: '负责艺术设计、宣传图与推广策划，塑造团队的视觉形象。',
+    tags: ['艺术设计', '宣传图', '宣传策划'],
   },
   {
-    key: 'sunkouniao',
-    avatar: '/images/team/avatar-jellish.jpg',
-    fallback: '孙',
-    zhName: '孙口鸟',
-    enName: 'Jellish',
-  },
-  {
-    key: 'quanlan',
+    name: '泉岚',
+    en: 'quanlan',
     avatar: '/images/team/avatar-quanlan.jpg',
-    fallback: '泉',
-    zhName: '泉岚',
-    enName: 'Quanlan',
+    role: '文案创作',
+    desc: '负责项目文案撰写与内容创作，完善团队对外表达。',
+    tags: ['文案撰写', '内容策划', '品牌表达'],
   },
-];
+  {
+    name: '孙口鸟',
+    en: 'Jellish',
+    avatar: '/images/team/avatar-jellish.jpg',
+    role: '音乐创作',
+    desc: '负责宣传片音乐、节日音乐、音效等内容的声音创作。',
+    tags: ['宣传片音乐', '音效', '配乐'],
+  },
+]
 
 export default function Team() {
-  const { lang, t } = useI18n();
-  const { ref: scrollRef, isVisible: visible } = useScrollAnimation(0.15);
-
   return (
-    <section id="team" className="section-padding bg-[#0e1319] border-t border-[rgba(0,230,118,0.08)]">
-      <div ref={scrollRef} className="container-main">
-        {/* Header */}
-        <div className="mb-12 md:mb-14">
-          <div className="flex items-baseline gap-4 mb-3">
-            <span className={`section-tag transition-all duration-700 ${visible ? 'opacity-100' : 'opacity-0'}`}>
-              {t('team.sectionTag')}
-            </span>
-            {lang === 'zh' && (
-              <span className={`text-[10px] font-bold tracking-[0.2em] text-[#4a5a66] uppercase transition-all duration-700 ${visible ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '80ms' }}>
-                TEAM
-              </span>
-            )}
-          </div>
-          <h2 className={`section-title transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{ transitionDelay: '100ms' }}>
-            {t('team.title')}
-          </h2>
-        </div>
+    <section id="team" className="border-t border-border bg-card/50 py-24 md:py-36">
+      <div className="mx-auto max-w-6xl px-6">
+        <SectionHeader
+          number="04"
+          eyebrow="Team / 核心团队"
+          title="一群热爱创造的人"
+          italic="the makers"
+          description="小而精的团队，每个人都有自己专注的方向，共同组成 8 人核心团队。"
+        />
 
-        {/* Members */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
-          {members.map((member, i) => {
-            const tags = String(t(`team.${member.key}.tags`)).split(',');
-            const displayName = lang === 'zh' ? member.zhName : member.enName;
-            return (
-              <div
-                key={member.key}
-                className={`border border-[rgba(0,230,118,0.08)] bg-[rgba(0,230,118,0.015)] p-6 md:p-8 transition-all duration-500 hover:border-[rgba(0,230,118,0.2)] ${
-                  visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-                }`}
-                style={{ transitionDelay: `${250 + i * 150}ms` }}
-              >
-                {/* Avatar + Name row */}
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="relative">
-                    <div className="w-14 h-14 overflow-hidden border border-[#00e676] bg-[rgba(0,230,118,0.06)] flex items-center justify-center">
-                      {member.avatar ? (
-                        <img src={member.avatar} alt={displayName} className="w-full h-full object-cover" loading="lazy" />
-                      ) : (
-                        <span className="text-sm font-black tracking-[0.12em] text-[#69f0ae] uppercase">
-                          {member.fallback}
-                        </span>
-                      )}
-                    </div>
-                    <div className="absolute -top-0.5 -left-0.5 w-2 h-2 border-t border-l border-[#00e676]" />
-                    <div className="absolute -bottom-0.5 -right-0.5 w-2 h-2 border-b border-r border-[#00e676]" />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-bold text-[#f0f4f8] uppercase tracking-wide">{displayName}</h3>
-                    <p className="text-[10px] text-[#69f0ae] uppercase tracking-[0.1em] font-bold">
-                      {t(`team.${member.key}.role`)}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Bio */}
-                <p className="text-[#8a9ba8] text-sm leading-relaxed mb-5">
-                  {t(`team.${member.key}.bio`)}
-                </p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2">
-                  {tags.map((tag) => (
-                    <span key={tag} className="text-[9px] font-bold px-2 py-0.5 border border-[rgba(0,230,118,0.1)] text-[#69f0ae] uppercase tracking-wider">
-                      {tag.trim()}
-                    </span>
-                  ))}
-                </div>
+        <div className="mt-16 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+          {members.map((m, i) => (
+            <motion.div
+              key={m.name}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.55, delay: (i % 3) * 0.1 }}
+              className="group text-center"
+            >
+              <div className="relative mx-auto h-28 w-28 overflow-hidden rounded-full border border-foreground/15 bg-background transition-all duration-300 group-hover:border-primary/60 group-hover:shadow-lg group-hover:shadow-primary/10">
+                <img
+                  src={m.avatar}
+                  alt={m.name}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
               </div>
-            );
-          })}
+
+              <h3 className="font-serif-cn mt-6 text-xl font-bold">{m.name}</h3>
+              <p className="mt-2 text-xs uppercase tracking-[0.25em] text-primary">{m.role}</p>
+              <p className="mx-auto mt-4 max-w-xs text-sm leading-loose text-muted-foreground">
+                {m.desc}
+              </p>
+              <p className="mt-4 text-xs tracking-[0.12em] text-muted-foreground/80">
+                {m.tags.map((t, idx) => (
+                  <span key={t}>
+                    {idx > 0 && <span className="font-serif-en mx-1.5 text-primary/60">·</span>}
+                    {t}
+                  </span>
+                ))}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
-  );
+  )
 }

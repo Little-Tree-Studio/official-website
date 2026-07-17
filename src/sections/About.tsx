@@ -1,98 +1,77 @@
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { useI18n } from '@/hooks/useI18n';
-import { Check } from 'lucide-react';
+import { motion } from 'framer-motion'
+import SectionHeader from './SectionHeader'
 
-const values = [0, 1, 2, 3];
+const advantages = [
+  { num: 'i.', title: '开源透明', desc: '开源透明的产品策略，代码经得起审视与检验。' },
+  { num: 'ii.', title: '现代技术', desc: '现代化的技术实现，保持技术栈的持续进化。' },
+  { num: 'iii.', title: '体验至上', desc: '注重用户体验的界面设计，好用更要好看。' },
+  { num: 'iv.', title: '跨平台', desc: '跨平台的兼容性支持，在哪里都能流畅运行。' },
+]
 
 export default function About() {
-  const { ref, isVisible } = useScrollAnimation(0.15);
-  const { lang, t } = useI18n();
-
-  const keywords = lang === 'zh'
-    ? ['开源', '实用', '有趣', '创造', '生长']
-    : String(t('about.keywords')).split(',');
-
-  const titleLines = String(t('about.title')).split('\n');
-
   return (
-    <section id="about" className="section-padding bg-[#0e1319] border-t border-[rgba(0,230,118,0.08)]">
-      <div ref={ref} className="container-main">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-          {/* Left: Text content */}
-          <div className="lg:col-span-7">
-            {/* Section tag */}
-            <div className="flex items-baseline gap-4 mb-4">
-              <span className={`section-tag transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-                {t('about.sectionTag')}
-              </span>
-              {lang === 'zh' && (
-                <span className={`text-[10px] font-bold tracking-[0.2em] text-[#4a5a66] uppercase transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '80ms' }}>
-                  ABOUT US
-                </span>
-              )}
-            </div>
+    <section id="about" className="border-t border-border py-24 md:py-36">
+      <div className="mx-auto max-w-6xl px-6">
+        <SectionHeader
+          number="01"
+          eyebrow="About / 关于我们"
+          title="让「实用」与「有趣」完美结合"
+          italic="practical & playful"
+        />
 
-            {/* Title */}
-            <h2 className={`section-title mb-4 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{ transitionDelay: '100ms' }}>
-              {titleLines[0]}
-              <br />
-              <span className={lang === 'zh' ? 'text-[#00e676]' : ''}>{titleLines[1]}</span>
-            </h2>
-
-            {/* Body */}
-            <p className={`text-[#8a9ba8] leading-[1.8] text-sm md:text-base mb-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{ transitionDelay: '180ms' }}>
-              {t('about.body')}
+        <div className="mt-16 grid gap-16 lg:grid-cols-2 lg:gap-20">
+          {/* 理念 */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.7 }}
+          >
+            <p className="text-lg leading-loose text-foreground/80">
+              小树工作室以「创新软件，自由创造」为核心理念，相信技术应该让生活更美好。我们致力于将「实用」与「有趣」完美结合，既解决用户的实际需求，又提供愉悦的使用体验。
             </p>
 
-            {/* Values list */}
-            <div className="border border-[rgba(0,230,118,0.08)]">
-              {values.map((idx, i) => (
-                <div
-                  key={idx}
-                  className={`flex items-center gap-3 px-4 py-3.5 transition-all duration-600 ${
-                    i < values.length - 1 ? 'border-b border-[rgba(0,230,118,0.06)]' : ''
-                  } ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
-                  style={{ transitionDelay: `${350 + i * 80}ms` }}
-                >
-                  <Check className="w-3.5 h-3.5 text-[#00e676] flex-shrink-0" />
-                  <span className="text-[#8a9ba8] text-sm">{t(`about.values.${idx}`)}</span>
+            {/* 品牌定位：引用块 */}
+            <blockquote className="relative mt-12 border-l-2 border-primary pl-8">
+              <span className="font-serif-en absolute -left-5 -top-7 select-none text-7xl text-primary/15">
+                “
+              </span>
+              <p className="font-serif-cn text-xl font-semibold leading-relaxed md:text-2xl">
+                作为独立软件工作室，我们专注于为寻求高质量、个性化软件解决方案的用户群体提供服务。
+              </p>
+              <footer className="mt-5 text-sm text-muted-foreground">
+                特别关注
+                <span className="font-serif-en mx-1.5 text-base text-primary">桌面美化</span>·
+                <span className="font-serif-en mx-1.5 text-base text-primary">游戏体验</span>·
+                <span className="font-serif-en mx-1.5 text-base text-primary">效率提升</span>
+                领域
+              </footer>
+            </blockquote>
+          </motion.div>
+
+          {/* 核心优势：编号列表 */}
+          <div>
+            {advantages.map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="group flex gap-6 border-b border-border py-7 transition-colors first:border-t hover:bg-card/60"
+              >
+                <span className="font-serif-en w-10 shrink-0 pt-1 text-xl text-primary/70">
+                  {item.num}
+                </span>
+                <div>
+                  <h3 className="font-serif-cn text-xl font-bold">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Right: Decorative keywords block */}
-          <div className={`lg:col-span-5 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '300ms' }}>
-            <div className="relative aspect-[4/3] max-w-[360px] mx-auto lg:mx-0 lg:ml-auto border border-[rgba(0,230,118,0.1)] bg-[rgba(0,230,118,0.015)]">
-              {/* Corner accents */}
-              <div className="absolute top-0 left-0 w-5 h-5 border-t border-l border-[rgba(0,230,118,0.3)]" />
-              <div className="absolute top-0 right-0 w-5 h-5 border-t border-r border-[rgba(0,230,118,0.3)]" />
-              <div className="absolute bottom-0 left-0 w-5 h-5 border-b border-l border-[rgba(0,230,118,0.3)]" />
-              <div className="absolute bottom-0 right-0 w-5 h-5 border-b border-r border-[rgba(0,230,118,0.3)]" />
-
-              {/* Inner frame */}
-              <div className="absolute inset-6 border border-[rgba(0,230,118,0.06)]" />
-
-              {/* Keywords */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="flex flex-wrap justify-center gap-2.5 max-w-[200px]">
-                  {keywords.map((word, i) => (
-                    <span
-                      key={word}
-                      className={`px-3.5 py-1.5 border border-[rgba(0,230,118,0.15)] text-xs font-bold text-[#69f0ae] uppercase tracking-wider bg-[rgba(0,230,118,0.04)] transition-all duration-600 ${
-                        isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
-                      }`}
-                      style={{ transitionDelay: `${500 + i * 120}ms` }}
-                    >
-                      {word}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
     </section>
-  );
+  )
 }

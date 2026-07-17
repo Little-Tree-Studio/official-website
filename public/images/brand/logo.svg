@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 244" width="200" height="244">
+  <!-- Little Tree Studio Logo (vector approximation) -->
+  <defs>
+    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#69e8b0"/>
+      <stop offset="1" stop-color="#2fae6e"/>
+    </linearGradient>
+    <linearGradient id="leafDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3fae74"/>
+      <stop offset="1" stop-color="#0f6b46"/>
+    </linearGradient>
+  </defs>
+  <!-- 树干 -->
+  <rect x="86" y="176" width="28" height="60" rx="4" fill="#3a4048"/>
+  <!-- 树冠（两片层叠三角） -->
+  <path d="M100 8 L186 168 Q190 178 180 178 L20 178 Q10 178 14 168 Z" fill="url(#leaf)"/>
+  <path d="M100 8 L186 168 Q190 178 180 178 L100 178 Z" fill="url(#leafDark)" opacity="0.92"/>
+</svg>
