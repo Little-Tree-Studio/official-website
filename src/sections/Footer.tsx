@@ -10,10 +10,10 @@ const navLinks = [
 ]
 
 const productLinks = [
-  { label: 'LT壁纸', href: 'https://wp.zsxiaoshu.cn' },
+  { label: '小树壁纸', href: 'https://wp.zsxiaoshu.cn' },
   { label: 'MineLauncher', href: 'https://ml.zsxiaoshu.cn' },
-  { label: 'LT视频压缩', href: 'https://github.com/shu-shu-1/glass' },
-  { label: '赛博玻璃', href: 'https://clock.zsxiaoshu.cn' },
+  { label: '赛博玻璃', href: 'https://github.com/shu-shu-1/glass' },
+  { label: '小树时钟', href: 'https://clock.zsxiaoshu.cn' },
 ]
 
 const resourceLinks = [
