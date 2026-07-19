@@ -4,6 +4,7 @@ import { Link, useSearchParams } from 'react-router'
 import {
   Download, Globe, ArrowLeft, Check, X as XIcon, AlertTriangle, Copy, ExternalLink,
 } from 'lucide-react'
+import { useSEO } from '../hooks/useSEO'
 
 const fade = (delay = 0) => ({
   initial: { opacity: 0, y: 22 },
@@ -94,6 +95,19 @@ export default function Brand() {
   const [lang, setLang] = useState<'zh' | 'en'>(params.get('lang') === 'en' ? 'en' : 'zh')
   const [copied, setCopied] = useState(false)
   const t = copy[lang]
+
+  useSEO({
+    title:
+      lang === 'zh'
+        ? '品牌资产与 Logo 下载 - 小树工作室'
+        : 'Brand Assets & Logo Downloads - Little Tree Studio',
+    description:
+      lang === 'zh'
+        ? '小树工作室（Little Tree Studio）品牌视觉资源与 Logo 下载，全部品牌资产受 LTS-OVAL 许可保护。'
+        : 'Download official Little Tree Studio logos and brand assets, protected under the LTS-OVAL License.',
+    path: '/brand',
+    lang,
+  })
 
   useEffect(() => {
     const f = () => setScrolled(window.scrollY > 24)

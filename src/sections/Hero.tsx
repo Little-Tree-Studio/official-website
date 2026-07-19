@@ -7,7 +7,7 @@ const fadeUp = {
 }
 
 const stats = [
-  { value: '06', label: '核心团队成员' },
+  { value: '07', label: '核心团队成员' },
   { value: '04', label: '核心产品' },
   { value: '100%', label: '开源理念' },
 ]

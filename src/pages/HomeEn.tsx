@@ -12,6 +12,7 @@ import {
   Sprout,
   LineChart,
 } from 'lucide-react'
+import { useSEO } from '../hooks/useSEO'
 
 const serif = "font-['Instrument_Serif'] italic font-normal"
 const mono = "font-['JetBrains_Mono']"
@@ -233,6 +234,13 @@ function SectionHead({
 }
 
 export default function HomeEn() {
+  useSEO({
+    title: 'Little Tree Studio - Innovative Software, Free Creation',
+    description:
+      'Little Tree Studio — innovative software, free creation. We believe technology should make life better, building practical and delightful products like Xiaoshu Wallpaper, MineLauncher, Xiaoshu Clock and CyberGlass.',
+    path: '/en',
+    lang: 'en',
+  })
   return (
     <div className="min-h-screen bg-[#0A0E0D] font-['Space_Grotesk'] text-[#E8EDE9] antialiased">
       {/* film grain */}
@@ -294,7 +302,7 @@ export default function HomeEn() {
             className="mt-24 grid grid-cols-3 divide-x divide-white/[0.08] border-t border-white/[0.08]"
           >
             {[
-              ['06', 'Team members'],
+              ['07', 'Team members'],
               ['04', 'Core products'],
               ['100%', 'Open source'],
             ].map(([v, l], i) => (
