@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowUpRight, Github, BookOpen, KeyRound } from 'lucide-react'
+import { ArrowUpRight, Github, BookOpen, KeyRound, Sparkles } from 'lucide-react'
 
 const navLinks = [
   { label: '首页', href: '#home' },
@@ -20,6 +20,7 @@ const resourceLinks = [
   { label: 'GitHub 组织', href: 'https://github.com/Little-Tree-Studio', icon: Github },
   { label: '产品文档', href: 'https://docs.zsxiaoshu.cn', icon: BookOpen },
   { label: '统一登录', href: 'https://auth.zsxiaoshu.cn', icon: KeyRound },
+  { label: 'AI聚合平台', href: 'https://ai.lianhaotian.com', icon: Sparkles },
 ]
 
 export default function Footer() {

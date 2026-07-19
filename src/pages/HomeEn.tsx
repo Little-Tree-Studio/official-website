@@ -7,6 +7,7 @@ import {
   Github,
   BookOpen,
   KeyRound,
+  Sparkles,
   Menu,
   X,
   Sprout,
@@ -560,6 +561,7 @@ export default function HomeEn() {
                 { icon: Github, url: 'https://github.com/Little-Tree-Studio', label: 'GitHub' },
                 { icon: BookOpen, url: 'https://docs.zsxiaoshu.cn', label: 'Docs' },
                 { icon: KeyRound, url: 'https://auth.zsxiaoshu.cn', label: 'Sign in' },
+                { icon: Sparkles, url: 'https://ai.lianhaotian.com', label: 'AI' },
               ].map((r) => (
                 <a
                   key={r.label}
