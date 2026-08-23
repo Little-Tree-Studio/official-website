@@ -29,6 +29,9 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Add Baidu verification file
+        run: cp baidu_verify_codeva-toJk0zLobk.html dist/
+
       - name: Upload dist artifact
         if: success()
         uses: actions/upload-artifact@v4
