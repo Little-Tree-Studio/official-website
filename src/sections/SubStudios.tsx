@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowUpRight, Sprout, LineChart } from 'lucide-react'
+import { ArrowUpRight, Sprout, LineChart, Music2 } from 'lucide-react'
 
 const studios = [
   {
@@ -21,6 +21,16 @@ const studios = [
     motto: '量化未知边界',
     desc: '量化交易科技研究员组织，深耕风控模型、高频交易与回测系统。将 50% 的收入捐赠至小树工作室基金会，支持开源量化工具与教育普及。',
     tags: ['风控模型', '高频交易', '回测系统'],
+  },
+  {
+    num: 'ⅲ',
+    name: '小树音乐',
+    en: 'Little Tree Mix',
+    url: 'https://music.zsxiaoshu.cn/',
+    icon: Music2,
+    motto: '让灵感被听见',
+    desc: '专注于原创音乐、配乐与声音设计的音乐工作室，用旋律记录灵感，为产品、影像与品牌创作富有感染力的声音体验。',
+    tags: ['原创音乐', '影视配乐', '声音设计'],
   },
 ]
 
@@ -48,11 +58,11 @@ export default function SubStudios() {
             </span>
           </h2>
           <p className="mt-5 max-w-2xl leading-loose text-muted-foreground">
-            围绕小树工作室生长的子品牌——一个深耕开源公益，一个探索量化科技。
+            围绕小树工作室生长的子品牌，在开源公益、量化科技与音乐创作中探索更多可能。
           </p>
         </motion.div>
 
-        <div className="mt-16 grid gap-8 md:grid-cols-2">
+        <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {studios.map((s, i) => (
             <motion.a
               key={s.name}

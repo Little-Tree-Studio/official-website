@@ -12,6 +12,7 @@ import {
   X,
   Sprout,
   LineChart,
+  Music2,
 } from 'lucide-react'
 import { useSEO } from '../hooks/useSEO'
 
@@ -48,6 +49,15 @@ const substudios = [
     motto: 'Quantifying the unknown',
     desc: 'A quantitative trading research collective focused on risk models, HFT and backtesting — donating 50% of revenue to the LTS Foundation to support open-source quant tools.',
     tags: ['Risk Models', 'HFT', 'Backtesting'],
+  },
+  {
+    name: 'Little Tree Mix',
+    full: '小树音乐',
+    url: 'https://music.zsxiaoshu.cn/',
+    icon: Music2,
+    motto: 'Let inspiration be heard',
+    desc: 'A music studio focused on original music, scoring and sound design — shaping expressive sonic experiences for products, films and brands.',
+    tags: ['Original Music', 'Scoring', 'Sound Design'],
   },
 ]
 
@@ -490,10 +500,10 @@ export default function HomeEn() {
                 One tree, <span className={`${serif} text-[#7FE3B8]`}>a whole grove.</span>
               </>
             }
-            desc="Two sub-brands growing around Little Tree Studio — one rooted in open-source philanthropy, one reaching into quantitative technology."
+            desc="Three sub-brands growing around Little Tree Studio — exploring open-source philanthropy, quantitative technology and music creation."
           />
 
-          <div className="mt-16 grid gap-5 md:grid-cols-2">
+          <div className="mt-16 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {substudios.map((s, i) => (
               <motion.a
                 key={s.name}
