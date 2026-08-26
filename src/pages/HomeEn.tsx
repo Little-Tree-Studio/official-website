@@ -53,7 +53,7 @@ const substudios = [
   {
     name: 'Little Tree Mix',
     full: '小树音乐',
-    url: 'https://music.zsxiaoshu.cn/',
+    url: 'https://mix.zsxiaoshu.cn/',
     icon: Music2,
     motto: 'Let inspiration be heard',
     desc: 'A music studio focused on original music, scoring and sound design — shaping expressive sonic experiences for products, films and brands.',

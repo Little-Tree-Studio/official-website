@@ -26,7 +26,7 @@ const studios = [
     num: 'ⅲ',
     name: '小树音乐',
     en: 'Little Tree Mix',
-    url: 'https://music.zsxiaoshu.cn/',
+    url: 'https://mix.zsxiaoshu.cn/',
     icon: Music2,
     motto: '让灵感被听见',
     desc: '专注于原创音乐、配乐与声音设计的音乐工作室，用旋律记录灵感，为产品、影像与品牌创作富有感染力的声音体验。',
